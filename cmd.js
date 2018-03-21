@@ -8,7 +8,8 @@ var commandline={
 function runCommand(command){
     //return refrence to the child process
     return exec(
-        command
+        command,
+        {maxBuffer: 1024 * 500}
     );
 }
 
@@ -16,6 +17,7 @@ function getString(command,callback){
     //return refrence to the child process
     return exec(
         command,
+        {maxBuffer: 1024 * 500},
         (
             function(){
                 return function(err,data,stderr){
